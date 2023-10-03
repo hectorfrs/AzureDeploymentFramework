@@ -9,7 +9,7 @@ ________________________________________________
 
 "@
 Write-Host -ForegroundColor DarkMagenta -Object @'
-    WELCOME TO ADF - AZURE DEPLOYMENT FRAMEWORK!
+    WELCOME TO EVERTEC - AZURE DEPLOYMENT FRAMEWORK!
 '@
 Write-Host -ForegroundColor DarkBlue -Object @'
 ________________________________________________
