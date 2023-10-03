@@ -10,14 +10,16 @@
 param Prefix string
 
 @allowed([
-  'I'
-  'D'
-  'T'
-  'U'
-  'P'
-  'S'
-  'G'
-  'A'
+  'POC'
+  'DEV'
+  'TST'
+  'CRT'
+  'PRP'
+  'PRD'
+  'DOP'
+  'UAT'
+  'INT'
+  'DRS'
 ])
 param Environment string
 
@@ -45,10 +47,13 @@ param Stage object
 param Extensions object
 param Global object
 param DeploymentInfo object
+param ProjectName string
+param CostCenter string
 
 targetScope = 'subscription'
 
-var Deployment = '${Prefix}-${Global.OrgName}-${Global.Appname}-${Environment}${DeploymentID}'
+//var Deployment = '${Prefix}-${Global.OrgName}-${Global.Appname}-${Environment}${DeploymentID}'
+var Deployment = 'AZU-${ProjectName}-${Prefix}-${Environment}${DeploymentID}-${CostCenter}'
 
 // var Locationlookup = {
 //   AZE2: 'eastus2'

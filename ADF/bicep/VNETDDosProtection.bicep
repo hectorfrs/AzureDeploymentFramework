@@ -1,16 +1,18 @@
 param Prefix string
 
 @allowed([
-  'I'
-  'D'
-  'T'
-  'U'
-  'P'
-  'S'
-  'G'
-  'A'
+  'POC'
+  'DEV'
+  'TST'
+  'CRT'
+  'PRP'
+  'PRD'
+  'DOP'
+  'UAT'
+  'INT'
+  'DRS'
 ])
-param Environment string = 'D'
+param Environment string = 'DEV'
 
 @allowed([
   '0'

@@ -1,20 +1,22 @@
-Write-Host -ForegroundColor DarkBlue -Object @"
+Write-Host -ForegroundColor DarkYellow -Object @"
 ________________________________________________
- __          __  _                            _
- \ \        / / | |                          | |
-  \ \  /\  / /__| | ___ ___  _ __ ___   ___  | |
-   \ \/  \/ / _ \ |/ __/ _ \| '_ ` _ \ / _ \ | |
-    \  /\  /  __/ | (_| (_) | | | | | |  __/ |_|
-     \/  \/ \___|_|\___\___/|_| |_| |_|\___| (_)
+
+     ######## ##     ## ######## ########  ######## ########  ######  
+     ##       ##     ## ##       ##     ##    ##    ##       ##    ## 
+     ##       ##     ## ##       ##     ##    ##    ##       ##       
+     ######   ##     ## ######   ########     ##    ######   ##       
+     ##        ##   ##  ##       ##   ##      ##    ##       ##       
+     ##         ## ##   ##       ##    ##     ##    ##       ##    ## 
+     ########    ###    ######## ##     ##    ##    ########  ######  
 
 "@
-Write-Host -ForegroundColor DarkMagenta -Object @'
+Write-Host -ForegroundColor DarkBlue -Object @'
     WELCOME TO EVERTEC - AZURE DEPLOYMENT FRAMEWORK!
 '@
 Write-Host -ForegroundColor DarkBlue -Object @'
 ________________________________________________
 '@
-Write-Host -ForegroundColor DarkYellow -Object @'
+Write-Host -ForegroundColor DarkMagenta -Object @'
 
 Read Docs: https://brwilkinson.github.io/AzureDeploymentFramework/
 '@
@@ -50,7 +52,7 @@ Write-Host -ForegroundColor DarkBlue -Object @'
 - Deploy the Resources - use your primary prefix
 '@
 Write-Host -ForegroundColor DarkYellow -Object @'
-    > AzDeploy @Current -Prefix ACU1 -TF ADF:\bicep\01-ALL-RG.bicep
+    > AzDeploy @Current -Prefix AEU1 -TF ADF:\bicep\01-ALL-RG.bicep
 '@
 Write-Host -ForegroundColor DarkBlue -Object @'
 ________________________________________________

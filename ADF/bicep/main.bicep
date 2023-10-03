@@ -10,7 +10,7 @@ module storageAccount 'br/CoreModules:sa:1.0.1' = {
     }
     Global: {
     }
-    Prefix: 'acu1'
+    Prefix: 'AEU1'
     Stage: {
     }
   }

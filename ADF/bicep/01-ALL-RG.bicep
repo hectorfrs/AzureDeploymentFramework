@@ -10,14 +10,16 @@
 param Prefix string
 
 @allowed([
-  'I'
-  'D'
-  'T'
-  'U'
-  'P'
-  'S'
-  'G'
-  'A'
+  'POC'
+  'DEV'
+  'TST'
+  'CRT'
+  'PRP'
+  'PRD'
+  'DOP'
+  'UAT'
+  'INT'
+  'DRS'
 ])
 param Environment string
 
@@ -62,8 +64,8 @@ var AzureDNS = '168.63.129.16'
 var DNSServerList = DeploymentInfo.?DNSServers ?? Global.DNSServers
 var DNSServers = [for (server, index) in DNSServerList: length(server) <= 3 ? '${networkId.upper}.${networkId.lower}.${server}' : server]
 
-module dp_Deployment_DDOS 'VNETDDosProtection.bicep' = if (bool(Stage.?DDOSPlan ?? 0)) {
-  name: 'dp${Deployment}-DDOS'
+module evt_Deployment_DDOS 'VNETDDosProtection.bicep' = if (bool(Stage.?DDOSPlan ?? 0)) {
+  name: 'evt-${Deployment}-DDOS'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -78,7 +80,7 @@ module dp_Deployment_DDOS 'VNETDDosProtection.bicep' = if (bool(Stage.?DDOSPlan 
 }
 
 module dp_Deployment_OMS 'OMS.bicep' = if (bool(Stage.OMS)) {
-  name: 'dp${Deployment}-OMS'
+  name: 'evt-${Deployment}-OMS'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -93,7 +95,7 @@ module dp_Deployment_OMS 'OMS.bicep' = if (bool(Stage.OMS)) {
 }
 
 module dp_Deployment_Grafana 'Grafana.bicep' = if (bool(Stage.?Grafana ?? 0)) {
-  name: 'dp${Deployment}-Grafana'
+  name: 'evt-${Deployment}-Grafana'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -110,7 +112,7 @@ module dp_Deployment_Grafana 'Grafana.bicep' = if (bool(Stage.?Grafana ?? 0)) {
 }
 
 module dp_Deployment_SA 'SA.bicep' = if (bool(Stage.SA)) {
-  name: 'dp${Deployment}-SA'
+  name: 'evt-${Deployment}-SA'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -128,7 +130,7 @@ module dp_Deployment_SA 'SA.bicep' = if (bool(Stage.SA)) {
 }
 
 module dp_Deployment_CDN 'CDN.SA.bicep' = if (bool(Stage.?CDN ?? 0)) {
-  name: 'dp${Deployment}-CDN'
+  name: 'evt-${Deployment}-CDN'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -162,7 +164,7 @@ module dp_Deployment_CDN 'CDN.SA.bicep' = if (bool(Stage.?CDN ?? 0)) {
 // }
 
 module dp_Deployment_NATGW 'NATGW.bicep' = if (bool(Stage.NATGW)) {
-  name: 'dp${Deployment}-NATGW'
+  name: 'evt-${Deployment}-NATGW'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -179,7 +181,7 @@ module dp_Deployment_NATGW 'NATGW.bicep' = if (bool(Stage.NATGW)) {
 }
 
 module dp_Deployment_NSG 'NSG.bicep' = if (bool(Stage.NSG)) {
-  name: 'dp${Deployment}-NSG'
+  name: 'evt-${Deployment}-NSG'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -196,7 +198,7 @@ module dp_Deployment_NSG 'NSG.bicep' = if (bool(Stage.NSG)) {
 }
 
 module dp_Deployment_NetworkWatcher 'NetworkWatcher.bicep' = if (bool(Stage.NetworkWatcher)) {
-  name: 'dp${Deployment}-NetworkWatcher'
+  name: 'evt-${Deployment}-NetworkWatcher'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -213,7 +215,7 @@ module dp_Deployment_NetworkWatcher 'NetworkWatcher.bicep' = if (bool(Stage.Netw
 }
 
 module dp_Deployment_FlowLogs 'NetworkFlowLogs.bicep' = if (bool(Stage.FlowLogs)) {
-  name: 'dp${Deployment}-FlowLogs'
+  name: 'evt-${Deployment}-FlowLogs'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -233,7 +235,7 @@ module dp_Deployment_FlowLogs 'NetworkFlowLogs.bicep' = if (bool(Stage.FlowLogs)
 }
 
 module dp_Deployment_RT 'RT.bicep' = if (bool(Stage.RT)) {
-  name: 'dp${Deployment}-RT'
+  name: 'evt-${Deployment}-RT'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID
@@ -251,7 +253,7 @@ module dp_Deployment_RT 'RT.bicep' = if (bool(Stage.RT)) {
 }
 
 module dp_Deployment_VNET 'VNET.bicep' = if (bool(Stage.VNET)) {
-  name: 'dp${Deployment}-VNET'
+  name: 'evt-${Deployment}-VNET'
   params: {
     // move these to Splatting later
     DeploymentID: DeploymentID

@@ -2,14 +2,16 @@
 param Prefix string
 
 @allowed([
-  'I'
-  'D'
-  'T'
-  'U'
-  'P'
-  'S'
-  'G'
-  'A'
+  'POC'
+  'DEV'
+  'TST'
+  'CRT'
+  'PRP'
+  'PRD'
+  'DOP'
+  'UAT'
+  'INT'
+  'DRS'
 ])
 #disable-next-line no-unused-params
 param Environment string

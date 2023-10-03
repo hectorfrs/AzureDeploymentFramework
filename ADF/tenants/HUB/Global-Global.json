@@ -1,6 +1,6 @@
 {
   "Global": {
-    "OrgName": "PE",
+    "OrgName": "EVT",
     "AppName": "HUB",
     "GlobalSA": {
       "name": "global"
@@ -17,8 +17,8 @@
       "second": 248,
       "third": 248
     },
-    "PrimaryLocation": "CentralUS",
-    "SecondaryLocation": "EastUS2",
+    "PrimaryLocation": "EastUS",
+    "SecondaryLocation": "WestUS",
     "IPAddressforRemoteAccess": [
       "62.162.123.81/32"
     ],

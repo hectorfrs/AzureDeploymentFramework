@@ -1,14 +1,16 @@
 param Prefix string
 
 @allowed([
-  'G'
-  'I'
-  'D'
-  'T'
-  'U'
-  'P'
-  'S'
-  'A'
+  'POC'
+  'DEV'
+  'TST'
+  'CRT'
+  'PRP'
+  'PRD'
+  'DOP'
+  'UAT'
+  'INT'
+  'DRS'
 ])
 param Environment string
 
@@ -39,7 +41,7 @@ param Extensions object
 param Global object
 param DeploymentInfo object
 
-var enviro = '${Environment}${DeploymentID}' // D1
+var enviro = '${Environment}${DeploymentID}' // DEV1
 var deployment = '${Prefix}-${Global.orgname}-${Global.AppName}-${enviro}' // AZE2-PE-HUB-D1
 var rg = '${Prefix}-${Global.orgname}-${Global.AppName}-RG-${enviro}' // AZE2-PE-HUB-D1
 
@@ -58,7 +60,7 @@ var identity = [for uai in uaiInfo: {
   match: Global.cn == '.' || contains(array(Global.CN), uai.name)
 }]
 
-resource RG 'Microsoft.Resources/resourceGroups@2022-09-01' = {
+resource RG 'Microsoft.Resources/resourceGroups@2023-07-01' = {
   name: rg
   location: location
   properties: {}
