@@ -30,7 +30,8 @@
         "powershell.notebooks.showToggleButton": true,
         "powershell.pester.useLegacyCodeLens": false,
         "pester.autoRunOnSave": false,
-        "azureAutomation.directory.basePath": "D:/repos/AARunbooks"
+        "azureAutomation.directory.basePath": "D:/repos/AARunbooks",
+        "editor.fontFamily": "MesloLGM Nerd Font"
     },
     "extensions": {
         "recommendations": [

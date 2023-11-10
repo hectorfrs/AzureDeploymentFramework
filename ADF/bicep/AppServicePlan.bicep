@@ -53,7 +53,7 @@ var ASPlanInfo = [for (asp, index) in appServiceplanInfo: {
   autoscale: contains(asp, 'autoscale')
 }]
 
-resource ASP 'Microsoft.Web/serverfarms@2021-01-01' = [for (item, index) in appServiceplanInfo: if (bool(item.deploy) && ASPlanInfo[index].match) {
+resource ASP 'Microsoft.Web/serverfarms@2022-09-01' = [for (item, index) in appServiceplanInfo: if (bool(item.deploy) && ASPlanInfo[index].match) {
   name: '${Deployment}-asp${item.Name}'
   location: resourceGroup().location
   kind: item.kind
@@ -72,7 +72,7 @@ resource ASP 'Microsoft.Web/serverfarms@2021-01-01' = [for (item, index) in appS
   }
 }]
 
-resource Autoscale 'Microsoft.Insights/autoscalesettings@2021-05-01-preview' = [for (item, index) in appServiceplanInfo: if (bool(item.deploy) && ASPlanInfo[index].match && ASPlanInfo[index].autoscale) {
+resource Autoscale 'Microsoft.Insights/autoscalesettings@2022-10-01' = [for (item, index) in appServiceplanInfo: if (bool(item.deploy) && ASPlanInfo[index].match && ASPlanInfo[index].autoscale) {
   name: '${Deployment}-asp${item.Name}-AutoScale'
   location: resourceGroup().location
   tags: {}
@@ -141,7 +141,7 @@ resource Autoscale 'Microsoft.Insights/autoscalesettings@2021-05-01-preview' = [
   }
 }]
 
-resource VMSSScaleDiags 'microsoft.insights/diagnosticSettings@2017-05-01-preview' = [for (item, index) in appServiceplanInfo: if (bool(item.deploy) && ASPlanInfo[index].match && ASPlanInfo[index].autoscale) {
+resource VMSSScaleDiags 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = [for (item, index) in appServiceplanInfo: if (bool(item.deploy) && ASPlanInfo[index].match && ASPlanInfo[index].autoscale) {
   name: 'service'
   scope: Autoscale[index]
   properties: {

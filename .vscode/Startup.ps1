@@ -57,3 +57,25 @@ Write-Host -ForegroundColor DarkYellow -Object @'
 Write-Host -ForegroundColor DarkBlue -Object @'
 ________________________________________________
 '@
+
+# install-ohmyposh.ps1
+
+# Verificar si Oh-My-Posh ya está instalado
+if (-Not (Test-Path $PROFILE)) {
+    # Instalar Oh-My-Posh
+    Write-Host "Instalando Oh-My-Posh..."
+    Install-Module -Name oh-my-posh -Force -Scope CurrentUser
+    Install-Module -Name posh-git -Scope CurrentUser
+
+    # Configurar Oh-My-Posh en los perfiles de PowerShell
+    Write-Host "Configurando Oh-My-Posh en el perfil del usuario..."
+    New-Item -Path $PROFILE -Type File -Force
+    Add-Content -Path $PROFILE -Value 'Import-Module oh-my-posh; oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH\cloud-context.omp.json" | Invoke-Expression'
+    oh-my-posh font install --user Meslo
+
+    Write-Host "Oh-My-Posh ha sido instalado y configurado."
+} else {
+    Write-Host "Oh-My-Posh ya está instalado."
+}
+
+# Puedes agregar cualquier otra configuración o comandos que necesites aquí
